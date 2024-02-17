@@ -1,4 +1,4 @@
-package com.dressfly
+package com.AlMumtaz
 
 import android.app.Application
 import com.facebook.react.PackageList
