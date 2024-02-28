@@ -2,34 +2,40 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import React from 'react'
 import HomeIconO from "react-native-heroicons/outline/HomeIcon";
 import PlusIconO from "react-native-heroicons/outline/PlusIcon";
-import ShoppingCartIconO from "react-native-heroicons/outline/ShoppingCartIcon";
-import ShoppingCartIconS from "react-native-heroicons/solid/ShoppingCartIcon";
+import ArrowPathIconO from "react-native-heroicons/outline/ArrowPathIcon";
+import ArrowPathIconS from "react-native-heroicons/solid/ArrowPathIcon";
 import HomeIconS from "react-native-heroicons/solid/HomeIcon";
-import MagnifyingGlassIconO from "react-native-heroicons/outline/MagnifyingGlassIcon";
-import MagnifyingGlassIconS from "react-native-heroicons/solid/MagnifyingGlassIcon";
+import ClipboardDocumentCheckIconO from "react-native-heroicons/outline/ClipboardDocumentCheckIcon";
+import ClipboardDocumentCheckIconS from "react-native-heroicons/solid/ClipboardDocumentCheckIcon";
 import UserIconO from "react-native-heroicons/outline/UserIcon";
 import UserIconS from "react-native-heroicons/solid/UserIcon";
 import tw from 'twrnc';
 
 import Home from '../Pages/Home'
-import { Text, View } from 'react-native';
-import { Color } from '../../Global';
+import { PixelRatio, Text, View } from 'react-native';
+import { Color, FontSize } from '../../Global';
 const BottomNavigator = () => {
 
     const Tab = createBottomTabNavigator()
 
+
+    const fontSize = (size) => {
+        const fontScale = PixelRatio.getFontScale();
+        return size / fontScale;
+    }
+
     return (
-        <Tab.Navigator style={{backgroundColor:Color.background}}  screenOptions={{
+        <Tab.Navigator style={{ backgroundColor: Color.white }} screenOptions={{
             tabBarStyle: {
-                backgroundColor: Color.background2,
+                backgroundColor: Color.background,
                 // position:'absolute',
                 elevation: 5,
                 borderTopWidth: 0,
-                marginHorizontal: 5,
+                marginHorizontal: 0,
                 padding: 0,
-                borderRadius: 20,
+                borderTopLeftRadius: 30,
+                borderTopRightRadius: 30,
                 height: 70,
-                bottom:10
 
             },
         }}>
@@ -39,9 +45,16 @@ const BottomNavigator = () => {
                     tabBarShowLabel: false,
                     tabBarLabelStyle: { color: 'white' },
                     tabBarIcon: ({ focused }) => focused ? (
-                        <HomeIconS size={25} color={Color.white} />
+                        <>
+                            <HomeIconS size={25} color={Color.white} />
+                            <Text style={{ color: Color.white, fontSize: fontSize(FontSize.size_3xs), fontWeight: '400', textAlign: 'center' }}>Get Offers</Text>
+                        </>
                     ) : (
-                        <HomeIconO size={25} color={Color.white} />
+                        <>
+                            <HomeIconO size={25} color={Color.black} />
+                            <Text style={{ color: Color.black, fontSize: fontSize(FontSize.size_3xs), fontWeight: '400', textAlign: 'center' }}>Get Offers</Text>
+
+                        </>
                     )
                 }} />
             <Tab.Screen name='Search' component={Home}
@@ -50,24 +63,16 @@ const BottomNavigator = () => {
                     tabBarShowLabel: false,
                     tabBarLabelStyle: { color: 'white' },
                     tabBarIcon: ({ focused }) => focused ? (
-                        <MagnifyingGlassIconS size={25} color={Color.white} />
+                        <>
+                            <ClipboardDocumentCheckIconS size={25} color={Color.white} />
+                            <Text style={{ color: Color.white, fontSize: fontSize(FontSize.size_3xs), fontWeight: '400', textAlign: 'center' }}>Your Orders</Text>
+                        </>
                     ) : (
-                        <MagnifyingGlassIconO size={25} color={Color.white} />
-                    )
-                }} />
-            <Tab.Screen name='Add' component={Home}
-                options={{
-                    headerShown: false,
-                    tabBarShowLabel: false,
-                    tabBarLabelStyle: { color: 'white' },
-                    tabBarIcon: ({ focused }) => focused ? (
-                        <View style={[tw`p-4 rounded-full`, { backgroundColor: Color.white }]}>
-                            <PlusIconO size={25} color={Color.black} />
-                        </View>
-                    ) : (
-                        <View style={[tw`p-4 rounded-full`, { backgroundColor: Color.white }]}>
-                            <PlusIconO size={25} color={Color.black} />
-                        </View>
+                        <>
+                            <ClipboardDocumentCheckIconO size={25} color={Color.black} />
+                            <Text style={{ color: Color.black, fontSize: fontSize(FontSize.size_3xs), fontWeight: '400', textAlign: 'center' }}>Your Orders</Text>
+
+                        </>
                     )
                 }} />
 
@@ -77,9 +82,16 @@ const BottomNavigator = () => {
                     tabBarShowLabel: false,
                     tabBarLabelStyle: { color: 'white' },
                     tabBarIcon: ({ focused }) => focused ? (
-                        <ShoppingCartIconS size={25} color={Color.white} />
+                        <>
+                            <ArrowPathIconS size={25} color={Color.white} />
+                            <Text style={{ color: Color.white, fontSize: fontSize(FontSize.size_3xs), fontWeight: '400', textAlign: 'center' }}>History</Text>
+                        </>
                     ) : (
-                        <ShoppingCartIconO size={25} color={Color.white} />
+                        <>
+                            <ArrowPathIconO size={25} color={Color.black} />
+                            <Text style={{ color: Color.black, fontSize: fontSize(FontSize.size_3xs), fontWeight: '400', textAlign: 'center' }}>History</Text>
+
+                        </>
                     )
                 }} />
 
@@ -89,9 +101,16 @@ const BottomNavigator = () => {
                     tabBarShowLabel: false,
                     tabBarLabelStyle: { color: 'white' },
                     tabBarIcon: ({ focused }) => focused ? (
-                        <UserIconS size={25} color={Color.white} />
+                        <>
+                            <UserIconS size={25} color={Color.white} />
+                            <Text style={{ color: Color.white, fontSize: fontSize(FontSize.size_3xs), fontWeight: '400', textAlign: 'center' }}>Profile</Text>
+                        </>
                     ) : (
-                        <UserIconO size={25} color={Color.white} />
+                        <>
+                            <UserIconO size={25} color={Color.black} />
+                            <Text style={{ color: Color.black, fontSize: fontSize(FontSize.size_3xs), fontWeight: '400', textAlign: 'center' }}>Profile</Text>
+
+                        </>
                     )
                 }} />
 

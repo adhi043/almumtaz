@@ -118,7 +118,7 @@ const PhoneVerify1 = ({ navigation }) => {
 
                         <View style={{ alignItems: 'center', justifyContent: 'center', marginBottom: 20 }}>
                             <View>
-                                <Image source={require('../../assets/slider11.png')} style={{ width: 220, height: 200 }} resizeMode="contain" />
+                                <Image source={require('../../assets/slider11.png')} style={{ width: width*0.6, height: height*0.25 }} resizeMode="contain" />
                             </View>
                         </View>
 
@@ -214,9 +214,9 @@ const PhoneVerify1 = ({ navigation }) => {
 
                             <View style={{ marginTop: 100 }}>
 
-                                <TouchableOpacity style={[tw`p-3`, { backgroundColor: Color.gray2, borderRadius: 10, flexDirection: 'row', width: '100%', justifyContent: 'center', alignItems: 'center', elevation: 5, marginTop: 50 }]} onPress={() => { 
-                                    // navigation.navigate()
-                                     }}>
+                                <TouchableOpacity style={[tw`p-3`, { backgroundColor: Color.gray2, borderRadius: 10, flexDirection: 'row', width: '100%', justifyContent: 'center', alignItems: 'center', elevation: 5, marginTop: 50 }]} onPress={() => {
+                                    navigation.navigate('OpenMap')
+                                }}>
 
                                     <Text style={{ color: Color.black, fontSize: fontSize(FontSize.headline3_size), fontWeight: '600' }}>Verify</Text>
 

@@ -213,7 +213,7 @@ const PhoneVerify = ({ navigation }) => {
 
                             <View style={{ marginTop: 50 }}>
 
-                                <TouchableOpacity style={[tw`p-3`, { backgroundColor: Color.yellow, borderRadius: 10, flexDirection: 'row', width: '100%', justifyContent: 'center', alignItems: 'center', elevation: 5, marginTop: 50 }]} onPress={() => { navigation.navigate('PhoneVerify1') }}>
+                                <TouchableOpacity style={[tw`p-3`, { backgroundColor: Color.orange, borderRadius: 10, flexDirection: 'row', width: '100%', justifyContent: 'center', alignItems: 'center', elevation: 5, marginTop: 50 }]} onPress={() => { navigation.navigate('PhoneVerify1') }}>
 
                                     <Text style={{ color: Color.white, fontSize: fontSize(FontSize.headline3_size), fontWeight: '400' }}>Join Almumtaz now</Text>
 

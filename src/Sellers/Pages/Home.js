@@ -1,5 +1,5 @@
 import * as React from "react";
-import { View, Text, TextInput, Pressable, TouchableOpacity, StatusBar, ScrollView, Image, FlatList, Dimensions, Animated } from "react-native";
+import { View, Text, TextInput, Pressable, TouchableOpacity, StatusBar, ScrollView, Image, FlatList, Dimensions, Animated, PixelRatio } from "react-native";
 import { Color, FontSize } from "../../Global";
 import tw from "twrnc";
 import BellIcon from "react-native-heroicons/outline/BellIcon";
@@ -16,7 +16,8 @@ import XMarkIcon from "react-native-heroicons/solid/XMarkIcon";
 import Pagination from "../Components/Pagination";
 import Modal from "react-native-modal";
 import Share from 'react-native-share';
-import ViewShot, { captureRef } from 'react-native-view-shot';
+import LottieView from "lottie-react-native";
+import Loader from "../../Loader";
 
 
 
@@ -26,23 +27,10 @@ const Home = ({ navigation }) => {
   const [show, setShow] = React.useState(false)
 
 
-
-
-  const shareImage = async () => {
-    try {
-      // console.log(viewRef.current);
-      const uri = await captureRef(viewRef, {
-        format: 'jpg',
-        quality: 0.8,
-      });
-      // console.log('uri', uri);
-      const shareResponse = await Share.open({ url: uri });
-      console.log('shareResponse', shareResponse);
-    } catch (error) {
-      console.log('error', error);
-    }
-  };
-
+  const fontSize = (size) => {
+    const fontScale = PixelRatio.getFontScale();
+    return size / fontScale;
+  }
 
 
 
@@ -54,293 +42,25 @@ const Home = ({ navigation }) => {
 
   return (
     <>
-      <ScrollView style={{ backgroundColor: Color.background }} showsVerticalScrollIndicator={false}>
-        <View style={{ padding: 20, }}>
 
-          <View style={{width:270,height:270,borderRadius:200,backgroundColor:Color.background2,position:'absolute',left:-50,top:-50,zIndex:-1}}/>
 
-          <View style={[tw`flex-row justify-between items-center`, { marginBottom: 20 }]}>
-            <View style={tw`flex-row justify-between items-center gap-x-3`}>
-              <Image source={require('../../assets/phot.png')} style={{ borderRadius: 20, width: 50, height: 50 }} />
-              <View>
-                <Text style={{ color: Color.colorwhite_100, fontSize: FontSize.font_size }}>Welcome Back</Text>
-                <Text style={{ color: Color.white, fontSize: FontSize.size_mini, fontWeight: '600' }}>Murtaza Pharmacy</Text>
-              </View>
+      <ScrollView style={{ backgroundColor: Color.white }} showsVerticalScrollIndicator={false}>
+
+
+        <View style={{ padding: 20 }}>
+
+
+          <View style={{ flexDirection: 'row', alignItems: 'flex-start', justifyContent: 'space-between', marginBottom: 20 }}>
+            <View>
+              <Image source={require('../../assets/slider11.png')} style={{ width: 90, height: 70 }} resizeMode="contain" />
             </View>
-            <View style={tw`flex-row justify-between items-center gap-x-3`}>
-              <TouchableOpacity style={[tw`p-3`, { backgroundColor: Color.colorGray_100, borderRadius: 20 }]}>
-                <BellIcon size={25} color={Color.white} />
-                <View style={{ height: 16, width: 16, borderRadius: 200, backgroundColor: Color.white, flexDirection: 'row', justifyContent: 'center', alignItems: 'center', position: 'absolute', right: 0, top: 0 }}>
-                  <Text style={{ color: Color.black, fontSize: 10 }}>2</Text>
-                </View>
-              </TouchableOpacity>
-            </View>
-
-          </View>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-          <View>
-
-
-            <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', width: '100%', marginBottom: 10 }}>
-
-
-              <View style={{ padding: 15, borderRadius: 20, width: '48%', elevation: 5, backgroundColor: Color.white }}>
-                <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
-                  <Text style={{ color: Color.black, fontSize: FontSize.size_mini, fontWeight: '600' }}>number of employes</Text>
-                  <TouchableOpacity style={[tw`p-2`, { backgroundColor: Color.colorGray_100, borderRadius: 20 }]}>
-                    <ArrowUpRightIcon size={20} color={Color.white} />
-                  </TouchableOpacity>
-                </View>
-                <Text style={{ color: Color.black, fontSize: FontSize.headline2_size, fontWeight: '600' }}>8</Text>
-              </View>
-
-
-              <View style={{ padding: 15, borderRadius: 20, width: '48%', elevation: 5, backgroundColor: Color.white }}>
-                <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
-                  <Text style={{ color: Color.black, fontSize: FontSize.size_mini, fontWeight: '600' }}>number of categorys</Text>
-                  <TouchableOpacity style={[tw`p-2`, { backgroundColor: Color.colorGray_100, borderRadius: 20 }]}>
-                    <ArrowUpRightIcon size={20} color={Color.white} />
-                  </TouchableOpacity>
-                </View>
-                <Text style={{ color: Color.black, fontSize: FontSize.headline2_size, fontWeight: '600' }}>8</Text>
-              </View>
-
-            </View>
-
-
-
-            <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', width: '100%', marginBottom: 10 }}>
-
-
-              <View style={{ padding: 15, borderRadius: 20, width: '48%', elevation: 5, backgroundColor: Color.white }}>
-                <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
-                  <Text style={{ color: Color.black, fontSize: FontSize.size_mini, fontWeight: '600' }}>number of products</Text>
-                  <TouchableOpacity style={[tw`p-2`, { backgroundColor: Color.colorGray_100, borderRadius: 20 }]}>
-                    <ArrowUpRightIcon size={20} color={Color.white} />
-                  </TouchableOpacity>
-                </View>
-                <Text style={{ color: Color.black, fontSize: FontSize.headline2_size, fontWeight: '600' }}>8</Text>
-              </View>
-
-
-              <View style={{ padding: 15, borderRadius: 20, width: '48%', elevation: 5, backgroundColor: Color.white }}>
-                <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
-                  <Text style={{ color: Color.black, fontSize: FontSize.size_mini, fontWeight: '600' }}>number of suppliers</Text>
-                  <TouchableOpacity style={[tw`p-2`, { backgroundColor: Color.colorGray_100, borderRadius: 20 }]}>
-                    <ArrowUpRightIcon size={20} color={Color.white} />
-                  </TouchableOpacity>
-                </View>
-                <Text style={{ color: Color.black, fontSize: FontSize.headline2_size, fontWeight: '600' }}>8</Text>
-              </View>
-            </View>
-          </View>
-
-
-
-
-
-
-
-
-
-
-
-
-
-          <View style={{ marginVertical: 10 }}>
-            <View style={{ padding: 15, borderRadius: 20, width: '100%', elevation: 5, backgroundColor: Color.white }}>
-              <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', width: '100%',marginBottom:10 }}>
-                <Text style={{ color: Color.black, fontSize: FontSize.headline3_size, fontWeight: 'bold' }}>Today Attendance</Text>
-                <TouchableOpacity style={[tw`p-2`, { backgroundColor: Color.colorGray_100, borderRadius: 20 }]}>
-                  <ArrowUpRightIcon size={20} color={Color.white} />
-                </TouchableOpacity>
-              </View>
-
-
-              <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', width: '100%',marginBottom:7 }}>
-                <TouchableOpacity style={{ flexDirection: 'row', gap: 5, alignItems: 'center' }} onPress={()=>{navigation.navigate('Sellers')}}>
-                  <View>
-                    <Image source={require('../../assets/phot.png')} style={{ borderRadius: 20, width: 45, height: 45 }} />
-                  </View>
-                  <View>
-                    <Text style={{ color: Color.black, fontSize: FontSize.size_mini, fontWeight: '600' }}>Muhammad Adnan</Text>
-                    <Text style={{ color: Color.gray2, fontSize: FontSize.font_size }}>9:15 AM - 7:15 PM</Text>
-                    <Text style={{ color: Color.colorGray_100, fontSize: FontSize.font_size }}>Manager</Text>
-                  </View>
-                </TouchableOpacity>
-                <TouchableOpacity style={[tw`p-2`, { backgroundColor: Color.colorMediumseagreen, borderRadius: 20,flexDirection:'row',alignItems:'center',justifyContent:'center',width:70 }]}>
-                <Text style={{ color: Color.white, fontSize: FontSize.font1_size}}>Present</Text>
-                </TouchableOpacity>
-              </View>
-
-
-              <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', width: '100%',marginBottom:7 }}>
-                <View style={{ flexDirection: 'row', gap: 5, alignItems: 'center' }}>
-                  <View>
-                    <Image source={require('../../assets/phot.png')} style={{ borderRadius: 20, width: 45, height: 45 }} />
-                  </View>
-                  <View>
-                    <Text style={{ color: Color.black, fontSize: FontSize.size_mini, fontWeight: '600' }}>Asad</Text>
-                    <Text style={{ color: Color.gray2, fontSize: FontSize.font_size }}>Not In - Not Out</Text>
-                    <Text style={{ color: Color.colorGray_100, fontSize: FontSize.font_size }}>Supervisor</Text>
-                  </View>
-                </View>
-                <TouchableOpacity style={[tw`p-2`, { backgroundColor: Color.danger, borderRadius: 20,flexDirection:'row',alignItems:'center',justifyContent:'center',width:70 }]}>
-                <Text style={{ color: Color.white, fontSize: FontSize.font1_size, }}>Absent</Text>
-                </TouchableOpacity>
-              </View>
-
-
-
-            </View>
-          </View>
-
-
-
-
-
-
-
-
-
-
-
-
-          <View style={{ marginVertical: 10 }}>
-            <View style={{ padding: 15, borderRadius: 20, width: '100%', elevation: 5, backgroundColor: Color.white }}>
-              <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', width: '100%',marginBottom:10 }}>
-                <Text style={{ color: Color.black, fontSize: FontSize.headline3_size, fontWeight: 'bold' }}>Pending Leaves</Text>
-                <TouchableOpacity style={[tw`p-2`, { backgroundColor: Color.colorGray_100, borderRadius: 20 }]}>
-                  <ArrowUpRightIcon size={20} color={Color.white} />
-                </TouchableOpacity>
-              </View>
-
-
-              <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', width: '100%',marginBottom:7 }}>
-                <View style={{ flexDirection: 'row', gap: 5, alignItems: 'center' }}>
-                  <View>
-                    <Image source={require('../../assets/phot.png')} style={{ borderRadius: 20, width: 45, height: 45 }} />
-                  </View>
-                  <View>
-                    <Text style={{ color: Color.black, fontSize: FontSize.size_mini, fontWeight: '600' }}>Muhammad Adnan</Text>
-                    <Text style={{ color: Color.colorGray_100, fontSize: FontSize.font_size }}>21-10-2024</Text>
-                  </View>
-                </View>
-                <TouchableOpacity style={[tw`p-2`, { backgroundColor: Color.danger, borderRadius: 20,flexDirection:'row',alignItems:'center',justifyContent:'center',width:70 }]}>
-                <Text style={{ color: Color.white, fontSize: FontSize.font1_size, }}>Pending</Text>
-                </TouchableOpacity>
-              </View>
-
-
-              <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', width: '100%',marginBottom:7 }}>
-                <View style={{ flexDirection: 'row', gap: 5, alignItems: 'center' }}>
-                  <View>
-                    <Image source={require('../../assets/phot.png')} style={{ borderRadius: 20, width: 45, height: 45 }} />
-                  </View>
-                  <View>
-                    <Text style={{ color: Color.black, fontSize: FontSize.size_mini, fontWeight: '600' }}>Muhammad Adnan</Text>
-                    <Text style={{ color: Color.colorGray_100, fontSize: FontSize.font_size }}>21-10-2024</Text>
-                  </View>
-                </View>
-                <TouchableOpacity style={[tw`p-2`, { backgroundColor: Color.danger, borderRadius: 20,flexDirection:'row',alignItems:'center',justifyContent:'center',width:70 }]}>
-                <Text style={{ color: Color.white, fontSize: FontSize.font1_size, }}>Pending</Text>
-                </TouchableOpacity>
-              </View>
-
-
-
-            </View>
-          </View>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-          <View style={{ marginVertical: 10 }}>
-            <View style={{ padding: 15, borderRadius: 20, width: '100%', elevation: 5, backgroundColor: Color.white }}>
-              <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', width: '100%',marginBottom:10 }}>
-                <Text style={{ color: Color.black, fontSize: FontSize.headline3_size, fontWeight: 'bold' }}>Today Complaints</Text>
-                <TouchableOpacity style={[tw`p-2`, { backgroundColor: Color.colorGray_100, borderRadius: 20 }]}>
-                  <ArrowUpRightIcon size={20} color={Color.white} />
-                </TouchableOpacity>
-              </View>
-
-
-              <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', width: '100%',marginBottom:7 }}>
-                <View style={{ flexDirection: 'row', gap: 5, alignItems: 'center' }}>
-                  <View>
-                    {/* <Image source={require('../../assets/phot.png')} style={{ borderRadius: 20, width: 45, height: 45 }} /> */}
-                  </View>
-                  <View>
-                    <Text style={{ color: Color.black, fontSize: FontSize.size_mini, fontWeight: '600' }}>My PC is not working...</Text>
-                    <Text style={{ color: Color.colorGray_100, fontSize: FontSize.font_size,fontWeight:'600' }}>Urgent</Text>
-                  </View>
-                </View>
-                <TouchableOpacity style={[tw`p-2 px-4`, { backgroundColor: Color.colorMediumseagreen, borderRadius: 20,flexDirection:'row',alignItems:'center',justifyContent:'center',width:70 }]}>
-                <Text style={{ color: Color.white, fontSize: FontSize.font1_size, }}>View</Text>
-                </TouchableOpacity>
-              </View>
-
-
-              <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', width: '100%',marginBottom:7 }}>
-                <View style={{ flexDirection: 'row', gap: 5, alignItems: 'center' }}>
-                  <View>
-                    {/* <Image source={require('../../assets/phot.png')} style={{ borderRadius: 20, width: 45, height: 45 }} /> */}
-                  </View>
-                  <View>
-                    <Text style={{ color: Color.black, fontSize: FontSize.size_mini, fontWeight: '600' }}>Solve my issue to resolve...</Text>
-                    <Text style={{ color: Color.colorGray_100, fontSize: FontSize.font_size,fontWeight:'600' }}>Low</Text>
-                  </View>
-                </View>
-                <TouchableOpacity style={[tw`p-2 px-4`, { backgroundColor: Color.colorMediumseagreen, borderRadius: 20,flexDirection:'row',alignItems:'center',justifyContent:'center',width:70 }]}>
-                <Text style={{ color: Color.white, fontSize: FontSize.font1_size, }}>View</Text>
-                </TouchableOpacity>
-              </View>
-
-
-
-            </View>
-          </View>
-
-
-
-
-
-
-
-          {/*<View style={[tw`flex-row justify-between items-center mb-4`, { paddingHorizontal: 20, }]}>
-            <Text style={{ color: Color.white, fontSize: FontSize.headline2_size, fontWeight: '600' }}>Categories</Text>
-            <TouchableOpacity style={tw`flex-row gap-x-3 items-center`}>
-              <Text style={{ color: Color.colorwhite_100, fontSize: FontSize.font_size }}>See All</Text>
-              <ArrowLongRightIcon size={25} color={Color.colorwhite_100} />
+            <TouchableOpacity style={{}} onPress={() => { navigation.goBack() }}>
+              <Text style={{ color: Color.black, fontSize: fontSize(FontSize.font_size), fontWeight: '600', textAlign: 'center' }}>Get Offers</Text>
             </TouchableOpacity>
-  </View>*/}
+          </View>
+
+
+
 
 
 
@@ -348,15 +68,11 @@ const Home = ({ navigation }) => {
 
 
 
-
-
-
-
-
-
-
-
       </ScrollView>
+
+
+      
+      <Loader/>
 
 
       <Modal isVisible={show} backdropColor={Color.background} backdropOpacity={0.4}  >

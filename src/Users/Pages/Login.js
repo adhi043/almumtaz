@@ -106,7 +106,7 @@ const Login = ({ navigation }) => {
     <ScrollView showsVerticalScrollIndicator={false} style={{ backgroundColor: Color.white, flex: 1 }}>
 
       <View style={{ position: 'absolute', zIndex: -1, left: 0, top: 0, }}>
-        <Image source={require('../../assets/login1.png')} style={{ width: width, height: width + 18, }} resizeMode="contain" />
+        <Image source={require('../../assets/login1.png')} style={{ width: width, height: width*1.05 }} resizeMode="contain" />
       </View>
 
 
@@ -115,11 +115,11 @@ const Login = ({ navigation }) => {
 
 
         <View>
-          <Image source={require('../../assets/slider11.png')} style={{ width: 220, height: 200 }} resizeMode="contain" />
+          <Image source={require('../../assets/slider11.png')} style={{ width: width*0.6, height: height*0.25 }} resizeMode="contain" />
         </View>
 
         <View>
-          <Image source={require('../../assets/login5.png')} style={{ width: 250, height: 50 }} resizeMode="contain" />
+          <Image source={require('../../assets/login5.png')} style={{ width: width*0.7, height: height*0.05 }} resizeMode="contain" />
         </View>
 
 
@@ -143,7 +143,7 @@ const Login = ({ navigation }) => {
 
 
         <View style={{marginTop: 80,}}>
-          <Image source={require('../../assets/login2.png')} style={{ width: width, height: 300 }} resizeMode="contain" />
+          <Image source={require('../../assets/login2.png')} style={{ width: width, height: height*0.37 }} resizeMode="contain" />
         </View>
 
 

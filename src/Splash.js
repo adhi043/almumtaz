@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Dimensions, Image, PixelRatio, StatusBar, Text, View } from 'react-native';
-import { Color, FontSize } from './Global';
+import { Color, FontFamily, FontSize } from './Global';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import LinearGradient from 'react-native-linear-gradient';
 
@@ -46,8 +46,8 @@ const Splash = ({ navigation }) => {
     <LinearGradient colors={[Color.background2, Color.background]} style={{ flex: 1, backgroundColor: Color.background, justifyContent: 'center', alignItems: 'center' }}>
       <Image source={require('./assets/logo.png')} style={{ width: width - 100, height: 300 }} resizeMode='contain' />
 
-      <Text style={{ color: Color.white, fontSize: fontSize(FontSize.font_size), fontWeight: '500', position: 'absolute', bottom: '5%' }}>Any work any task you'll get everything here</Text>
-
+      <Text style={{ color: Color.white, fontSize: fontSize(FontSize.font_size), fontWeight: '500', position: 'absolute', bottom: '5%',fontFamily:FontFamily.regular }}>Any work any task you'll get everything here</Text>
+ 
     </LinearGradient> 
   );
 };

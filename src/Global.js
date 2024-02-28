@@ -1,7 +1,10 @@
 /* fonts */
 export const FontFamily = {
-  pxRegular: "Roboto-BoldItalic",
-  sFProText: "SF Pro Text",
+  regular: 'UberMove-Regular',
+  medium: 'UberMove-Medium',
+  bold: 'UberMove-Bold',
+  urdu: 'Jameel Noori Nastaleeq Kasheeda',
+  light: 'UberMove-Light',
 };
 /* font sizes */
 export const FontSize = {
@@ -13,13 +16,16 @@ export const FontSize = {
   size_3xs: 10,
   size_mini: 15,
   headline_size: 34,
-  headline2_size: 26,
+  headline2_size: 25,
 };
 /* Colors */
 export const Color = {
   gray: "#808080",
+  green1: "#009245",
+  green2: "#00FF00",
+  orange: "orange",
   green: "#39B54A",
-  yellow: "#FBB03B",
+  yellow: "#FFF700",
   blue: "#1778F2",
   black: "#222",
   colorGray_100: "rgba(0, 0, 0, 0.2)",
@@ -36,7 +42,8 @@ export const Color = {
   colorDarkslategray: "#2d2d2d",
   error: "#f01f0e",
   colorMediumseagreen: "#2aa952",
-  gray2: "#DCDCDC",
+  gray2: "#F2F2F2",
+  gray3: "#FBFBFB",
 };
 /* border radiuses */
 export const Border = {
@@ -57,4 +64,5 @@ export const Border = {
 
 // export const baseUrl='https://test.yumhubb.com/pharmacy'
 // export const baseUrl='http://192.168.100.29:8000/pharmacy'
-export const baseUrl='http://192.168.35.50:8000/pharmacy'
+export const baseUrl = 'http://192.168.35.50:8000/pharmacy'
+export const googleKey = 'AIzaSyA0ezzOFq6lTHs4i4DlmMPJpV48LAWMx7o'

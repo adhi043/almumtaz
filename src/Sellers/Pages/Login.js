@@ -1,6 +1,6 @@
 
 import { View, Text, Pressable, TouchableOpacity, StatusBar, Image, Dimensions, ScrollView, TextInput, PixelRatio } from "react-native";
-import { Color, FontSize, baseUrl } from "../../Global";
+import { Color, FontFamily, FontSize, baseUrl } from "../../Global";
 import tw from "twrnc";
 import { useFocusEffect } from "@react-navigation/native";
 import { useCallback, useRef, useState } from "react";
@@ -114,7 +114,7 @@ const Login = ({ navigation }) => {
               <TouchableOpacity style={[tw`p-3`, { backgroundColor: Color.background2, borderRadius: 20, width: 67, elevation: 5 }]}>
                 <UserCircleIcon size={45} color={Color.white} />
               </TouchableOpacity>
-              <Text style={{ color: Color.black, fontSize: FontSize.headline2_size, fontWeight: '800' }}>Pharmacy Login</Text>
+              <Text style={{ color: Color.black, fontSize: FontSize.headline2_size, fontWeight: '800',fontFamily:FontFamily.regular }}>Pharmacy Login</Text>
             </View>
 
 

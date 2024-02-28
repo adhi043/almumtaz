@@ -3,14 +3,14 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import React from 'react'
 import { Text, View } from 'react-native'
 import BottomNavigator from './BottomNavigator'
-import TopNavigator from './TopNavigator'
-import Attendance from '../Pages/Attendance'
 import Splash from '../Pages/Splash'
 import PhoneVerify from '../Pages/PhoneVerify'
 import PhoneVerify1 from '../Pages/PhoneVerify1'
 import Signup from '../Pages/Signup'
 import Signup1 from '../Pages/Signup1'
 import Signup2 from '../Pages/Signup2'
+import Signup3 from '../Pages/Signup3'
+import Signup4 from '../Pages/Signup4'
 
 const StackNavigator =()=>  {
 
@@ -26,8 +26,8 @@ const StackNavigator =()=>  {
             <Stack.Screen name='Signup' component={Signup} options={{headerShown:false}} />
             <Stack.Screen name='Signup1' component={Signup1} options={{headerShown:false}} />
             <Stack.Screen name='Signup2' component={Signup2} options={{headerShown:false}} />
-            <Stack.Screen name='Attendance' component={Attendance} options={{headerShown:false}} />
-            <Stack.Screen name='Sellers' component={TopNavigator} options={{headerShown:false}} />
+            <Stack.Screen name='Signup3' component={Signup3} options={{headerShown:false}} />
+            <Stack.Screen name='Signup4' component={Signup4} options={{headerShown:false}} />
             <Stack.Screen name='Main' component={BottomNavigator} options={{headerShown:false}}/>
         </Stack.Navigator>
       </NavigationContainer>

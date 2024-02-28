@@ -1,6 +1,6 @@
 
 import { View, Text, Pressable, TouchableOpacity, StatusBar, Image, Dimensions, ScrollView, TextInput, PixelRatio } from "react-native";
-import { Color, FontSize, baseUrl } from "../../Global";
+import { Color, FontFamily, FontSize, baseUrl } from "../../Global";
 import tw from "twrnc";
 import { useFocusEffect } from "@react-navigation/native";
 import { useCallback, useRef, useState } from "react";
@@ -116,7 +116,7 @@ const Login1 = ({ navigation, route }) => {
 
                         <View style={{ alignItems: 'center', justifyContent: 'center', marginBottom: 20 }}>
                             <View>
-                                <Image source={require('../../assets/slider11.png')} style={{ width: 220, height: 200 }} resizeMode="contain" />
+                                <Image source={require('../../assets/slider11.png')} style={{  width: width*0.6, height: height*0.25 }} resizeMode="contain" />
                             </View>
                         </View>
 
@@ -126,14 +126,14 @@ const Login1 = ({ navigation, route }) => {
                             <TouchableOpacity style={[tw`p-2`, { backgroundColor: sel === 'Login' ? Color.background : Color.gray2, borderRadius: 10, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', minWidth: 70, gap: 5, elevation: 5, }]} onPress={() => {
                                 setSel('Login')
                             }}>
-                                <Text style={{ color: sel === 'Login' ? Color.white : Color.black, fontSize: fontSize(FontSize.font_size), fontWeight: '500' }}>Login</Text>
+                                <Text style={{ color: sel === 'Login' ? Color.white : Color.black, fontSize: fontSize(FontSize.font_size), fontWeight: '500',fontFamily:FontFamily.bold }}>Login</Text>
                             </TouchableOpacity>
 
 
                             <TouchableOpacity style={[tw`p-2`, { backgroundColor: sel === 'Signup' ? Color.background : Color.gray2, borderRadius: 10, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', minWidth: 70, gap: 5, elevation: 5, }]} onPress={() => {
                                 setSel('Signup')
                             }}>
-                                <Text style={{ color: sel === 'Signup' ? Color.white : Color.black, fontSize: fontSize(FontSize.font_size), fontWeight: '500' }}>Signup</Text>
+                                <Text style={{ color: sel === 'Signup' ? Color.white : Color.black, fontSize: fontSize(FontSize.font_size), fontWeight: '500',fontFamily:FontFamily.bold }}>Signup</Text>
                             </TouchableOpacity>
 
 
@@ -147,7 +147,7 @@ const Login1 = ({ navigation, route }) => {
 
 
                                 <View style={{ padding: 5, backgroundColor: Color.white, borderRadius: 10, flexDirection: 'row', alignItems: 'center', gap: 10, marginBottom: 15, borderWidth: 1, borderColor: Color.gray }}>
-                                    <TextInput style={{ width: '80%', padding: 10, color: Color.black }} placeholder="Enter your mobile number" placeholderTextColor={Color.colorGray_100} defaultValue={phone} onChangeText={(value) => { setPhone(value) }} />
+                                    <TextInput style={{ width: '80%', padding: 10, color: Color.black,fontFamily:FontFamily.regular }} placeholder="Enter your mobile number" placeholderTextColor={Color.colorGray_100} defaultValue={phone} onChangeText={(value) => { setPhone(value) }} />
                                 </View>
 
 
@@ -155,7 +155,7 @@ const Login1 = ({ navigation, route }) => {
 
                                 <View style={{ padding: 5, backgroundColor: Color.white, borderRadius: 10, flexDirection: 'row', alignItems: 'center', gap: 10, marginBottom: 15, borderWidth: 1, borderColor: Color.gray }}>
 
-                                    <TextInput style={{ width: '83%', padding: 10, color: Color.black }} placeholder="Password" placeholderTextColor={Color.colorGray_100} defaultValue={password} onChangeText={(value) => { setPassword(value) }} secureTextEntry={hide} />
+                                    <TextInput style={{ width: '83%', padding: 10, color: Color.black,fontFamily:FontFamily.regular }} placeholder="Password" placeholderTextColor={Color.colorGray_100} defaultValue={password} onChangeText={(value) => { setPassword(value) }} secureTextEntry={hide} />
                                     <TouchableOpacity style={[tw`p-2`, { borderRadius: 20, }]} onPress={() => { setHide(!hide) }}>
                                         {hide ? <EyeSlashIcon size={25} color={Color.colorGray_100} /> : <EyeIcon size={25} color={Color.colorGray_100} />}
                                     </TouchableOpacity>
@@ -163,7 +163,7 @@ const Login1 = ({ navigation, route }) => {
 
 
                                 <TouchableOpacity onPress={()=>{navigation.navigate('ForgetPass')}}>
-                                    <Text style={{ color: Color.black, fontSize: fontSize(FontSize.font_size), fontWeight: '500', textAlign: 'center' }}>Forgot Password?</Text>
+                                    <Text style={{ color: Color.black, fontSize: fontSize(FontSize.font_size), fontWeight: '500', textAlign: 'center',fontFamily:FontFamily.regular }}>Forgot Password?</Text>
                                 </TouchableOpacity>
 
 
@@ -173,12 +173,12 @@ const Login1 = ({ navigation, route }) => {
 
                                     <TouchableOpacity style={[tw`p-3`, { backgroundColor: Color.background, borderRadius: 10, flexDirection: 'row', width: '100%', justifyContent: 'center', alignItems: 'center', elevation: 5, marginTop: 50 }]} onPress={() => { navigation.navigate('PhoneVerify') }}>
 
-                                        <Text style={{ color: Color.white, fontSize: fontSize(FontSize.headline3_size), fontWeight: '600' }}>Login</Text>
+                                        <Text style={{ color: Color.white, fontSize: fontSize(FontSize.headline3_size), fontWeight: '600',fontFamily:FontFamily.bold }}>Login</Text>
 
                                     </TouchableOpacity>
 
                                     <View style={{ marginVertical: 10 }}>
-                                        <Text style={{ color: Color.black, fontSize: fontSize(FontSize.font_size), fontWeight: '400', textAlign: 'center' }}>Or login with social logins</Text>
+                                        <Text style={{ color: Color.black, fontSize: fontSize(FontSize.font_size), fontWeight: '400', textAlign: 'center',fontFamily:FontFamily.regular }}>Or login with social logins</Text>
                                     </View>
 
 

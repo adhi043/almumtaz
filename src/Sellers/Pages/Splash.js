@@ -4,10 +4,10 @@ import { Color, FontSize } from '../../Global';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import LinearGradient from 'react-native-linear-gradient';
 
-const { width, height } = Dimensions.get('window');
 
 const Splash = ({ navigation }) => {
-
+  
+  const { width, height } = Dimensions.get('screen');
   const [animatedText, setAnimatedText] = useState('');
   const [showSecondCircle, setShowSecondCircle] = useState(false);
 
@@ -24,30 +24,17 @@ const Splash = ({ navigation }) => {
 
     navigation.navigate('PhoneVerify')
 
-    // const mydata = JSON.parse(await AsyncStorage.getItem('data'))
-    // const login = JSON.parse(await AsyncStorage.getItem('login'))
-
-    // console.log(mydata,login);
-    // if(mydata && login==='Admin'){
-    //     navigation.navigate('Business')
-    // }
-    // if(mydata && login==='Employe'){
-    //     navigation.navigate('Employee')
-    // }
-    // else{
-    //     navigation.navigate('Slider')
-    //     console.log('navigation error on login page');
-    // }
-
-  }, 2000);
+  }, 1000);
  
  
   return (
-    <ImageBackground source={require('../../assets/sellersplash.png')} style={{ flex: 1, backgroundColor: Color.background, justifyContent: 'center', alignItems: 'center' }}>
-      <Image source={require('../../assets/logo.png')} style={{ width: width - 100, height: 300 }} resizeMode='contain' />
+    <LinearGradient colors={[Color.background2, Color.background]} style={{ flex: 1, backgroundColor: Color.background, justifyContent: 'center', alignItems: 'center' }}>
+      <Image source={require('../../assets/logo.png')} style={{ width: width*0.6, height: height*0.5 }} resizeMode='contain' />
 
+      <Image source={require('../../assets/sellersplash1.png')} style={{ width: width*0.4, height: height*0.2,position: 'absolute', bottom: '3%' }} resizeMode='contain' />
 
-    </ImageBackground> 
+    </LinearGradient>
+    
   );
 };
 
